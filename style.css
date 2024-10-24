@@ -1,0 +1,119 @@
+/* Regole generali per il body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Sfondo specifico per la home page */
+body.home-page {
+    background-image: url('home-background.jpeg'); /* Immagine di sfondo per la home */
+}
+
+body.home-page header h1 {
+    color: rgb(248, 249, 248); /* Colore bianco per la home page */
+}
+
+/* Sfondo per tutte le altre pagine */
+body:not(.home-page) {
+    background-image: url('hoter-background.jpeg'); /* Immagine di sfondo per le altre pagine */
+    background-size: cover; /* Assicurati che copra l'intera area */
+    background-position: center; /* Centra l'immagine */
+    background-repeat: no-repeat; /* Non ripete l'immagine */
+}
+
+body:not(.home-page) header h1 {
+    color: #333; /* Colore della scritta per le altre pagine */
+}
+
+/* Regole per l'header */
+header {
+    text-align: center;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 60px;
+    font-family: 'Courier New';
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin: 0;
+    padding: 20px 0;
+}
+
+/* Navigazione */
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    font-size: 24px;
+    font-family: 'Tahoma', sans-serif;
+    color: #333;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.3s ease;
+}
+
+nav ul li a:hover {
+    color: #ff6600;
+}
+
+/* Immagini */
+img {
+    width: 100%;
+    height: auto;
+    max-width: 600px;
+}
+
+/* Stile per la sezione */
+section {
+    text-align: center;
+    margin: 20px auto;
+}
+
+/* Stile generale per le tabelle */
+table {
+    width: 80%; /* Mantieni la larghezza al 80% */
+    margin: 20px auto;
+    border-collapse: collapse; /* Unisci i bordi delle celle */
+    background-color: #fff; /* Sfondo della tabella */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombra della tabella */
+}
+
+/* Stile per le intestazioni e le celle */
+th, td {
+    border: 1px solid #ddd; /* Bordi delle celle */
+    padding: 10px; /* Padding uniforme */
+    text-align: center; /* Allineamento del testo */
+}
+
+/* Stile per le intestazioni */
+th {
+    background-color: #f4f4f4; /* Colore di sfondo delle intestazioni */
+    font-weight: bold; /* Grassetto per le intestazioni */
+}
+
+/* Colore di sfondo per righe pari */
+tr:nth-child(even) {
+    background-color: #f9f9f9; /* Colore di sfondo per righe pari */
+}
+
+/* Media query per dispositivi mobili */
+@media (max-width: 600px) {
+    table {
+        width: 100%; /* Tabella al 100% su schermi piccoli */
+    }
+}
