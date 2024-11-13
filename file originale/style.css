@@ -11,11 +11,11 @@ body {
 
 /* Sfondo specifico per la home page */
 body.home-page {
-    background-image: url('background.webp'); /* Immagine di sfondo per la home */
+    background-image: url('home-background.png'); /* Immagine di sfondo per la home */
 }
 
 body.home-page header h1 {
-    color: rgb(0, 0, 0); /* Colore del testo per l'intestazione nella home page (bianco) */
+    color: rgb(100, 100, 100); /* Colore del testo per l'intestazione nella home page (bianco) */
 }
 
 /* Sfondo per tutte le altre pagine */

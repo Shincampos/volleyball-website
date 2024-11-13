@@ -1,40 +1,42 @@
-<!DOCTYPE html>
-<html lang="it">
+<!DOCTYPE html> <!-- Dichiara il tipo di documento come HTML5 -->
+<html lang="it"> <!-- Inizia l'elemento HTML e imposta la lingua del contenuto a italiano -->
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calendario</title>
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8"> <!-- Definisce il set di caratteri utilizzato come UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura il viewport per dispositivi mobili per una migliore visualizzazione su schermi piccoli -->
+    <title>Calendario</title> <!-- Titolo della pagina, visualizzato nella scheda del browser -->
+    <link rel="stylesheet" href="style.css"> <!-- Collega il file CSS esterno per la formattazione della pagina -->
 </head>
-<body>
-    <header>
-        <h1>Calendario Partite</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="results.html">Risultati</a></li>
-                <li><a href="ranking.html">Classifica</a></li>
-                <li><a href="gallery.html">Galleria Fotografica</a></li>
-            </ul>
-        </nav>
-    </header>
+<body> <!-- Inizio del corpo della pagina -->
 
-    <section>
-        <h2>Prossime Partite</h2>
-        <table id="calendar-table">
-            <thead>
-                <tr>
-                    <th>Incontro</th>
-                    <th>Data</th>
-                    <th>Ora</th>
-                </tr>
+    <header> <!-- Intestazione della pagina -->
+        <h1>Calendario Partite</h1> <!-- Titolo principale nella pagina -->
+        <nav> <!-- Inizio della barra di navigazione -->
+            <ul> <!-- Elenco non ordinato per i collegamenti di navigazione -->
+                <li><a href="index.html">Home</a></li> <!-- Collegamento alla pagina Home -->
+                <li><a href="results.html">Risultati</a></li> <!-- Collegamento alla pagina Risultati -->
+                <li><a href="ranking.html">Classifica</a></li> <!-- Collegamento alla pagina Classifica -->
+                <li><a href="gallery.html">Galleria Fotografica</a></li> <!-- Collegamento alla pagina Galleria Fotografica -->
+            </ul> <!-- Fine dell'elenco di navigazione -->
+        </nav> <!-- Fine della barra di navigazione -->
+    </header> <!-- Fine dell'intestazione -->
+
+    <section> <!-- Sezione centrale per il contenuto della pagina -->
+        <h2>Prossime Partite</h2> <!-- Titolo per la sezione delle prossime partite -->
+        <table id="calendar-table"> <!-- Tabella con un ID per la personalizzazione dello stile -->
+            <thead> <!-- Inizio della sezione di intestazione della tabella -->
+                <tr> <!-- Riga di intestazione della tabella -->
+                    <th>Incontro</th> <!-- Colonna dell'incontro, allineata al centro e in grassetto -->
+                    <th>Data</th> <!-- Colonna della data -->
+                    <th>Ora</th> <!-- Colonna dell'orario -->
+                </tr> <!-- Fine della riga di intestazione -->
             </thead>
-            <tbody>
-                <tr>
-                    <td>Squadra A - Squadra B</td>
-                    <td>18/11/2024</td>
-                    <td>21:00</td>
-                </tr>
+            <tbody> <!-- Corpo della tabella -->
+                <tr> <!-- Inizio di una riga di dati nella tabella -->
+                    <td>Squadra A - Squadra B</td> <!-- Colonna contenente i nomi delle squadre -->
+                    <td>18/11/2024</td> <!-- Colonna della data dell'incontro -->
+                    <td>21:00</td> <!-- Colonna dell'orario dell'incontro -->
+                </tr> <!-- Fine della riga di dati -->
+                <!-- Seguenti righe simili alla prima, per aggiungere ulteriori incontri -->
                 <tr>
                     <td>Squadra A - Squadra B</td>
                     <td>18/11/2024</td>
@@ -61,8 +63,8 @@
                     <td>21:00</td>
                 </tr>
                 <!-- Aggiungi qui altre righe per i tuoi incontri -->
-            </tbody>
-        </table>
-    </section>
-</body>
-</html>
+            </tbody> <!-- Fine del corpo della tabella -->
+        </table> <!-- Fine della tabella -->
+    </section> <!-- Fine della sezione -->
+</body> <!-- Fine del corpo della pagina -->
+</html> <!-- Fine dell'elemento HTML -->
