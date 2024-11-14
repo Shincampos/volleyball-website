@@ -116,7 +116,23 @@ tr:nth-child(even) {
 
 /* Media query per dispositivi mobili */
 @media (max-width: 600px) {
-    table {
-        width: 100%; /* Tabella al 100% su schermi piccoli */
+    body {
+        margin: 0 auto; /* centra il corpo */
+        padding: 0 5%; /* aggiunge un po' di padding laterale */
+    }
+
+    header, section, table {
+        width: 100%; /* Fornisce una larghezza completa per adattarsi */
+        padding: 0; /* Rimuove padding extra */
+        margin: 0 auto; /* Centra gli elementi */
+    }
+
+    nav ul li {
+        display: block; /* I link di navigazione appaiono in colonna */
+        margin: 5px 0; /* Margine tra i link per leggibilità */
+    }
+
+    header h1 {
+        font-size: 36px; /* Riduce la dimensione del font per l’intestazione */
     }
 }
