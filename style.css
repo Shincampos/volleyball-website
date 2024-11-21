@@ -21,13 +21,6 @@ body.home-page header h1 {
 /* Sfondo per tutte le altre pagine */
 body:not(.home-page) {
     background-image: url('background.jpg'); /* Immagine di sfondo per le altre pagine */
-    background-size: cover; /* Assicura che l'immagine copra l'intera area */
-    background-position: center; /* Centra l'immagine */
-    background-repeat: no-repeat; /* Non ripete l'immagine */
-}
-
-body:not(.home-page) header h1 {
-    color: #333; /* Colore del testo per l'intestazione nelle altre pagine (grigio scuro) */
 }
 
 /* Regole per l'header */
@@ -75,16 +68,19 @@ nav ul li a:hover {
 img {
     width: 100%; /* Immagini occupano il 100% della larghezza del contenitore */
     height: auto; /* Mantiene l'aspetto originale dell'immagine */
-    max-width: 600px; /* Limita la larghezza massima dell'immagine a 600px */
 }
 
-/* Stile per la sezione */
+/* Stile per la sezione dei risultati e tabelle */
+.results-container {
+    max-width: 90%; /* Limita la larghezza massima della sezione a 90% per una buona visualizzazione su mobile */
+    margin: 20px auto; /* Centra la sezione con margini automatici e aggiunge margine verticale */
+}
 section {
-    text-align: center; /* Allinea il contenuto della sezione al centro */
-    margin: 20px auto; /* Margine verticale di 20px e orizzontale automatico per centrare */
+    margin-top: 20px; /* Aggiungi uno spazio uniforme sopra le sezioni */
 }
 
-/* Stile generale per le tabelle */
+
+/* Stile generale per le tabelle e intestazioni/celle*/
 table {
     width: 80%; /* Mantiene la larghezza della tabella all'80% del contenitore */
     margin: 20px auto; /* Margine verticale di 20px e orizzontale automatico per centrare */
@@ -106,33 +102,37 @@ th, td {
 /* Stile per le intestazioni */
 th {
     background-color: #f4f4f4; /* Colore di sfondo delle intestazioni (grigio chiaro) */
-    font-weight: bold; /* Grassetto per le intestazioni */
 }
 
-/* Colore di sfondo per righe pari */
+/* Colore di sfondo per righe pari nella tabella*/
 tr:nth-child(even) {
     background-color: #f9f9f9; /* Colore di sfondo per righe pari (grigio molto chiaro) */
 }
 
-/* Media query per dispositivi mobili */
+/* Media query per dispositivi mobili (max-width =600px)*/
 @media (max-width: 600px) {
-    body {
-        margin: 0 auto; /* centra il corpo */
-        padding: 0 5%; /* aggiunge un po' di padding laterale */
-    }
 
-    header, section, table {
-        width: 100%; /* Fornisce una larghezza completa per adattarsi */
-        padding: 0; /* Rimuove padding extra */
-        margin: 0 auto; /* Centra gli elementi */
-    }
+   body {
+        padding-left: 5%; 
+        padding-right: 5%; 
+   }
 
-    nav ul li {
-        display: block; /* I link di navigazione appaiono in colonna */
-        margin: 5px 0; /* Margine tra i link per leggibilità */
-    }
+   header h1 {
+        font-size: 36px; 
+   }
 
-    header h1 {
-        font-size: 36px; /* Riduce la dimensione del font per l’intestazione */
-    }
+   nav ul li {
+        display: block; 
+        margin-bottom: 10px;
+   }
+
+   table {
+        width: calc(100% - 20px); 
+        margin-bottom: 20px;
+   }
+
+   th, td {
+       font-size: 14px;
+       padding: 8px;
+   }
 }

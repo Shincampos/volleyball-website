@@ -1,70 +1,79 @@
-<!DOCTYPE html> <!-- Dichiara il tipo di documento come HTML5 -->
-<html lang="it"> <!-- Inizia l'elemento HTML e imposta la lingua del contenuto a italiano -->
+<!DOCTYPE html>
+<html lang="it">
 <head>
-    <meta charset="UTF-8"> <!-- Definisce il set di caratteri utilizzato come UTF-8 -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Configura il viewport per dispositivi mobili per una migliore visualizzazione su schermi piccoli -->
-    <title>Calendario</title> <!-- Titolo della pagina, visualizzato nella scheda del browser -->
-    <link rel="stylesheet" href="style.css"> <!-- Collega il file CSS esterno per la formattazione della pagina -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Stile per la scritta GIRONE ANDATA */
+        .girone-label {
+            text-align: center; /* Allinea il testo al centro */
+            font-weight: bold; /* Grassetto per la scritta GIRONE ANDATA */
+            font-size: 1.5em; /* Dimensione del font */
+            margin-bottom: 10px; /* Spazio sotto la scritta */
+            background-color: white; /* Sfondo bianco */
+            padding: 10px; /* Spaziatura interna */
+            border-radius: 5px; /* Angoli arrotondati */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombra leggera per un effetto di profondità */
+            width: fit-content; /* Larghezza in base al contenuto */
+            margin-left: auto; /* Centra orizzontalmente */
+            margin-right: auto; /* Centra orizzontalmente */
+        }
+
+        table {
+            width: 100%; /* Rende la tabella larga quanto il contenitore */
+            border-collapse: collapse; /* Rimuove gli spazi tra le celle della tabella */
+        }
+
+        th, td {
+            border: 1px solid #ccc; /* Bordo delle celle */
+            padding: 8px; /* Spaziatura interna delle celle */
+            text-align: left; /* Allinea il testo a sinistra */
+        }
+
+        th {
+            background-color: #f2f2f2; /* Sfondo grigio chiaro per l'intestazione della tabella */
+        }
+    </style>
 </head>
-<body> <!-- Inizio del corpo della pagina -->
+<body>
 
-    <header> <!-- Intestazione della pagina -->
-        <h1>Calendario Partite</h1> <!-- Titolo principale nella pagina -->
-        <nav> <!-- Inizio della barra di navigazione -->
-            <ul> <!-- Elenco non ordinato per i collegamenti di navigazione -->
-                <li><a href="index.html">Home</a></li> <!-- Collegamento alla pagina Home -->
-                <li><a href="results.html">Risultati</a></li> <!-- Collegamento alla pagina Risultati -->
-                <li><a href="ranking.html">Classifica</a></li> <!-- Collegamento alla pagina Classifica -->
-                <li><a href="gallery.html">Galleria Fotografica</a></li> <!-- Collegamento alla pagina Galleria Fotografica -->
-            </ul> <!-- Fine dell'elenco di navigazione -->
-        </nav> <!-- Fine della barra di navigazione -->
-    </header> <!-- Fine dell'intestazione -->
+    <header>
+        <h1>Calendario Partite</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="results.html">Risultati</a></li>
+                <li><a href="ranking.html">Classifica</a></li>
+                <li><a href="gallery.html">Galleria Fotografica</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <section> <!-- Sezione centrale per il contenuto della pagina -->
-        <h2>Prossime Partite</h2> <!-- Titolo per la sezione delle prossime partite -->
-        <table id="calendar-table"> <!-- Tabella con un ID per la personalizzazione dello stile -->
-            <thead> <!-- Inizio della sezione di intestazione della tabella -->
-                <tr> <!-- Riga di intestazione della tabella -->
-                    <th>Incontro</th> <!-- Colonna dell'incontro, allineata al centro e in grassetto -->
-                    <th>Data</th> <!-- Colonna della data -->
-                    <th>Ora</th> <!-- Colonna dell'orario -->
-                </tr> <!-- Fine della riga di intestazione -->
+    <section>
+        <!-- Scritta GIRONE ANDATA sopra la tabella -->
+        <div class="girone-label">GIRONE ANDATA</div>
+        <div style="max-width: 800px; margin: 0 auto;"> <!-- Contenitore per centrare la tabella -->
+
+        <table id="calendar-table">
+            <thead>
+                <tr>
+                    <th>SQUADRA CASA</th>
+                    <th>SQUADRA FUORI</th>
+                    <th>Data</th>
+                    <th>Giorno</th>
+                    <th>Ora</th>
+                </tr>
             </thead>
-            <tbody> <!-- Corpo della tabella -->
-                <tr> <!-- Inizio di una riga di dati nella tabella -->
-                    <td>Squadra A - Squadra B</td> <!-- Colonna contenente i nomi delle squadre -->
-                    <td>18/11/2024</td> <!-- Colonna della data dell'incontro -->
-                    <td>21:00</td> <!-- Colonna dell'orario dell'incontro -->
-                </tr> <!-- Fine della riga di dati -->
-                <!-- Seguenti righe simili alla prima, per aggiungere ulteriori incontri -->
-                <tr>
-                    <td>Squadra A - Squadra B</td>
-                    <td>18/11/2024</td>
-                    <td>21:00</td>
-                </tr>
-                <tr>
-                    <td>Squadra A - Squadra B</td>
-                    <td>18/11/2024</td>
-                    <td>21:00</td>
-                </tr>
-                <tr>
-                    <td>Squadra A - Squadra B</td>
-                    <td>18/11/2024</td>
-                    <td>21:00</td>
-                </tr>
-                <tr>
-                    <td>Squadra A - Squadra B</td>
-                    <td>18/11/2024</td>
-                    <td>21:00</td>
-                </tr>
-                <tr>
-                    <td>Squadra A - Squadra B</td>
-                    <td>18/11/2024</td>
-                    <td>21:00</td>
-                </tr>
-                <!-- Aggiungi qui altre righe per i tuoi incontri -->
-            </tbody> <!-- Fine del corpo della tabella -->
-        </table> <!-- Fine della tabella -->
-    </section> <!-- Fine della sezione -->
-</body> <!-- Fine del corpo della pagina -->
-</html> <!-- Fine dell'elemento HTML -->
+            <tbody id="calendar-body">
+                <!-- Le righe delle partite verranno inserite qui -->
+            </tbody>
+        </table>
+    </section>
+
+    <!-- Includi il file JavaScript -->
+    <script src="calendar.js"></script>
+
+</body>
+</html>
