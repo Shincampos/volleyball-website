@@ -40,8 +40,8 @@ function populateResults(records) {
 
     records.forEach((record, index) => {
         const row = resultsBody.insertRow();
-        row.insertCell(0).innerText = record.fields['SQUADRA CASA'] || 'N/A'; // Nome della squadra in casa
-        row.insertCell(1).innerText = record.fields['SQUADRA FUORI'] || 'N/A'; // Nome della squadra fuori casa
+        row.insertCell(0).innerText = record.fields['IN CASA'] || 'N/A'; // Nome della squadra in casa
+        row.insertCell(1).innerText = record.fields['FUORI CASA'] || 'N/A'; // Nome della squadra fuori casa
         row.insertCell(2).innerText = record.fields['CASA'] || 'N/A'; // Risultato del Set Casa
         row.insertCell(3).innerText = record.fields['FUORI'] || 'N/A'; // Risultato del Set Fuori
         
