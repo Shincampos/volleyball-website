@@ -8,32 +8,41 @@
     <style>
         /* Stile per la scritta GIRONE ANDATA */
         .girone-label {
-            text-align: center; /* Allinea il testo al centro */
-            font-weight: bold; /* Grassetto per la scritta GIRONE ANDATA */
-            font-size: 1.5em; /* Dimensione del font */
-            margin-bottom: 10px; /* Spazio sotto la scritta */
-            background-color: white; /* Sfondo bianco */
-            padding: 10px; /* Spaziatura interna */
-            border-radius: 5px; /* Angoli arrotondati */
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Ombra leggera per un effetto di profondità */
-            width: fit-content; /* Larghezza in base al contenuto */
-            margin-left: auto; /* Centra orizzontalmente */
-            margin-right: auto; /* Centra orizzontalmente */
+            text-align: center; 
+            font-weight: bold; 
+            font-size: 1.5em; 
+            margin-bottom: 10px; 
+            background-color: white; 
+            padding: 10px; 
+            border-radius: 5px; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+            width: fit-content; 
+            margin-left: auto; 
+            margin-right: auto; 
         }
 
         table {
-            width: 100%; /* Rende la tabella larga quanto il contenitore */
-            border-collapse: collapse; /* Rimuove gli spazi tra le celle della tabella */
+            width: 80%; /* Mantiene la larghezza della tabella all'80% del contenitore */
+            margin: 20px auto; /* Margine verticale di 20px e orizzontale automatico per centrare */
+            border-collapse: collapse;
+            border-spacing: 0;
+            background-color: #fff; /* Sfondo della tabella (bianco) */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Ombra leggera per la tabella */
+            border-radius: 8px; /* Angoli smussati per la tabella */
         }
 
         th, td {
-            border: 1px solid #ccc; /* Bordo delle celle */
-            padding: 8px; /* Spaziatura interna delle celle */
-            text-align: left; /* Allinea il testo a sinistra */
+            border: 1px solid #ddd; /* Bordi delle celle (grigio chiaro) */
+            padding: 10px; /* Padding uniforme di 10px per tutte le celle */
+            text-align: center; /* Allineamento del testo nelle celle al centro */
         }
 
         th {
-            background-color: #f2f2f2; /* Sfondo grigio chiaro per l'intestazione della tabella */
+            background-color: #f4f4f4; /* Colore di sfondo delle intestazioni (grigio chiaro) */
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9; /* Colore di sfondo per righe pari (grigio molto chiaro) */
         }
     </style>
 </head>
@@ -49,30 +58,26 @@
             </ul>
         </nav>
     </header>
-    <section>
-            <!-- Scritta GIRONE ANDATA sopra la tabella -->
-            <div class="girone-label">GIRONE ANDATA</div>
-    
-            <table id="calendar-table">
 
-                <tbody id="calendar-body">
-                    <!-- Le righe delle partite verranno inserite qui -->
+    <section>
+        <!-- Scritta GIRONE ANDATA sopra la tabella -->
+        <div class="girone-label">GIRONE ANDATA</div>
+
+        <div style="max-width: 800px; margin: 0 auto;">
+            <table id="results-table">
+                <thead>
+                    <tr>
+                        <th>SQUADRA IN CASA</th>
+                        <th>SQUADRA FUORI CASA</th> 
+                        <th>RISULTATO CASA</th> <!-- Risultato del set casa -->
+                        <th>RISULTATO FUORI</th> <!-- Risultato del set fuori -->
+                    </tr>
+                </thead>
+                <tbody id="results-body">
+                    <!-- I risultati verranno inseriti qui tramite JavaScript -->
                 </tbody>
             </table>
-        </section>
-        <table id="results-table">
-            <thead>
-                <tr>
-                    <th>IN CASA</th>
-                    <th>FUORI CASA</th> 
-                    <th>CASA</th> <!-- Colonna per i set della squadra casa -->
-                    <th>FUORI</th> <!-- Colonna per i set della squadra fuori -->
-                </tr>
-            </thead>
-            <tbody id="results-body">
-                <!-- I risultati verranno inseriti qui tramite JavaScript -->
-            </tbody>
-        </table>
+        </div>
     </section>
 
     <!-- Includi il file JavaScript -->
