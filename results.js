@@ -26,38 +26,35 @@ function fetchResultsData() {
 function populateResults(records) {
     const resultsBody = document.getElementById('results-body');
 
-    // Aggiungi la riga per GIORNATA 1 subito dopo l'intestazione
-    const dayRow = resultsBody.insertRow();
-    const cell = dayRow.insertCell(0);
-    cell.colSpan = 4; // Colspan per far sì che la scritta occupi tutta la riga
-    cell.innerText = `GIORNATA 1`; // Scritta GIORNATA 1
-    cell.style.fontWeight = 'bold'; // Grassetto per la scritta GIORNATA
-    cell.style.textAlign = 'center'; // Centra il testo
-    cell.style.backgroundColor = '#f0f8ff'; // Colore di sfondo (puoi cambiarlo)
-    cell.style.color = '#000080'; // Colore del testo (puoi cambiarlo)
+    // Pulisci il contenuto precedente della tabella
+    resultsBody.innerHTML = ''; 
 
+    let currentDay = 1; // Iniziamo dalla GIORNATA 1
     let matchCount = 0; // Variabile per tenere traccia delle partite
 
-    records.forEach((record, index) => {
-        const row = resultsBody.insertRow();
-        row.insertCell(0).innerText = record.fields['IN CASA'] || 'N/A'; // Nome della squadra in casa
-        row.insertCell(1).innerText = record.fields['FUORI CASA'] || 'N/A'; // Nome della squadra fuori casa
-        row.insertCell(2).innerText = record.fields['CASA'] || 'N/A'; // Risultato del Set Casa
-        row.insertCell(3).innerText = record.fields['FUORI'] || 'N/A'; // Risultato del Set Fuori
-        
-        matchCount++; // Incrementa il conteggio delle partite
-
+    records.forEach((record) => {
         // Aggiungi una riga per la GIORNATA ogni 4 partite
         if (matchCount % 4 === 0) {
             const dayRow = resultsBody.insertRow();
             const cell = dayRow.insertCell(0);
-            cell.colSpan = 4; 
-            cell.innerText = `GIORNATA ${Math.floor(matchCount / 4) + 1}`; 
+            cell.colSpan = 3; // Colspan per far sì che la scritta occupi tutta la riga
+            cell.innerText = `GIORNATA ${currentDay}`; 
             cell.style.fontWeight = 'bold';
             cell.style.textAlign = 'center';
             cell.style.backgroundColor = '#f0f8ff'; 
             cell.style.color = '#000080'; 
+            currentDay++; // Incrementa la giornata dopo aver aggiunto la riga
         }
+
+        const row = resultsBody.insertRow();
+        row.insertCell(0).innerText = record.fields['IN CASA'] || 'N/A'; // Nome della squadra in casa
+        row.insertCell(1).innerText = record.fields['FUORI CASA'] || 'N/A'; // Nome della squadra fuori casa
+        
+        // Unisci i risultati in un'unica cella sotto l'intestazione "RISULTATO"
+        const risultatoCell = row.insertCell(2); 
+        risultatoCell.innerText = `${record.fields['CASA'] || 'N/A'} - ${record.fields['FUORI'] || 'N/A'}`; 
+
+        matchCount++; // Incrementa il conteggio delle partite
     });
 }
 
