@@ -41,8 +41,8 @@ function populateCalendar(records) {
 
     records.forEach(record => {
         const row = calendarBody.insertRow();
-        row.insertCell(0).innerText = record.fields['SQUADRA CASA'] || 'N/A'; // Squadra in casa
-        row.insertCell(1).innerText = record.fields['SQUADRA FUORI'] || 'N/A'; // Squadra in trasferta
+        row.insertCell(0).innerText = record.fields['IN CASA'] || 'N/A'; // Squadra in casa
+        row.insertCell(1).innerText = record.fields['FUORI CASA'] || 'N/A'; // Squadra in trasferta
         row.insertCell(2).innerText = record.fields['Data'] || 'N/A'; // Data della partita
         row.insertCell(3).innerText = record.fields['Giorno'] || 'N/A'; // Giorno della partita
         row.insertCell(4).innerText = record.fields['Ora'] || 'N/A'; // Ora della partita
