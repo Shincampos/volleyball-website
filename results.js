@@ -50,9 +50,17 @@ function populateResults(records) {
         row.insertCell(0).innerText = record.fields['IN CASA'] || 'N/A'; // Nome della squadra in casa
         row.insertCell(1).innerText = record.fields['FUORI CASA'] || 'N/A'; // Nome della squadra fuori casa
         
-        // Unisci i risultati in un'unica cella sotto l'intestazione "RISULTATO"
+        // Gestione dei risultati
+        const risultatoCasa = record.fields['CASA'];
+        const risultatoFuori = record.fields['FUORI'];
+
+        // Controllo esplicito per gestire valori null e zero
+        const casaDisplay = (risultatoCasa !== undefined && risultatoCasa !== null) ? risultatoCasa : 0;
+        const fuoriDisplay = (risultatoFuori !== undefined && risultatoFuori !== null) ? risultatoFuori : 0;
+
+        // Inserisci i risultati nella cella sotto l'intestazione "RISULTATO"
         const risultatoCell = row.insertCell(2); 
-        risultatoCell.innerText = `${record.fields['CASA'] || 'N/A'} - ${record.fields['FUORI'] || 'N/A'}`; 
+        risultatoCell.innerText = `${casaDisplay} - ${fuoriDisplay}`; 
 
         matchCount++; // Incrementa il conteggio delle partite
     });
