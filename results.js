@@ -37,7 +37,7 @@ function populateResults(records) {
         if (matchCount % 4 === 0) {
             const dayRow = resultsBody.insertRow();
             const cell = dayRow.insertCell(0);
-            cell.colSpan = 3; // Colspan per far sì che la scritta occupi tutta la riga
+            cell.colSpan = 6; // Colspan per far sì che la scritta occupi tutta la riga
             cell.innerText = `GIORNATA ${currentDay}`; 
             cell.style.fontWeight = 'bold';
             cell.style.textAlign = 'center';
@@ -61,6 +61,21 @@ function populateResults(records) {
         // Inserisci i risultati nella cella sotto l'intestazione "RISULTATO"
         const risultatoCell = row.insertCell(2); 
         risultatoCell.innerText = `${casaDisplay} - ${fuoriDisplay}`; 
+
+        // Recupero dei punteggi dei set
+        const primoSetIn = record.fields['1 SET IN'] || 'N/A';
+        const primoSetOut = record.fields['1 SET OUT'] || 'N/A';
+        
+        const secondoSetIn = record.fields['2 SET IN'] || 'N/A';
+        const secondoSetOut = record.fields['2 SET OUT'] || 'N/A';
+
+        const terzoSetIn = record.fields['3 SET IN'] || 'N/A';
+        const terzoSetOut = record.fields['3 SET OUT'] || 'N/A';
+
+        // Inserisci i punteggi dei set nelle nuove colonne
+        row.insertCell(3).innerText = `${primoSetIn} - ${primoSetOut}`; // Primo Set
+        row.insertCell(4).innerText = `${secondoSetIn} - ${secondoSetOut}`; // Secondo Set
+        row.insertCell(5).innerText = `${terzoSetIn} - ${terzoSetOut}`; // Terzo Set
 
         matchCount++; // Incrementa il conteggio delle partite
     });
