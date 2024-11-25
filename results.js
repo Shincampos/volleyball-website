@@ -54,7 +54,7 @@ function populateResults(records) {
         const risultatoCasa = record.fields['CASA'];
         const risultatoFuori = record.fields['FUORI'];
 
-        // Controllo esplicito per gestire valori null e zero
+        // Visualizza i risultati, anche se sono zero
         const casaDisplay = (risultatoCasa !== undefined && risultatoCasa !== null) ? risultatoCasa : 0;
         const fuoriDisplay = (risultatoFuori !== undefined && risultatoFuori !== null) ? risultatoFuori : 0;
 
@@ -62,15 +62,15 @@ function populateResults(records) {
         const risultatoCell = row.insertCell(2); 
         risultatoCell.innerText = `${casaDisplay} - ${fuoriDisplay}`; 
 
-        // Recupero dei punteggi dei set
-        const primoSetIn = record.fields['1 SET IN'] || 'N/A';
-        const primoSetOut = record.fields['1 SET OUT'] || 'N/A';
+        // Recupero dei punteggi dei set, accettando il valore zero
+        const primoSetIn = record.fields['1 SET IN'] !== undefined ? record.fields['1 SET IN'] : 0;
+        const primoSetOut = record.fields['1 SET OUT'] !== undefined ? record.fields['1 SET OUT'] : 0;
         
-        const secondoSetIn = record.fields['2 SET IN'] || 'N/A';
-        const secondoSetOut = record.fields['2 SET OUT'] || 'N/A';
+        const secondoSetIn = record.fields['2 SET IN'] !== undefined ? record.fields['2 SET IN'] : 0;
+        const secondoSetOut = record.fields['2 SET OUT'] !== undefined ? record.fields['2 SET OUT'] : 0;
 
-        const terzoSetIn = record.fields['3 SET IN'] || 'N/A';
-        const terzoSetOut = record.fields['3 SET OUT'] || 'N/A';
+        const terzoSetIn = record.fields['3 SET IN'] !== undefined ? record.fields['3 SET IN'] : 0;
+        const terzoSetOut = record.fields['3 SET OUT'] !== undefined ? record.fields['3 SET OUT'] : 0;
 
         // Inserisci i punteggi dei set nelle nuove colonne
         row.insertCell(3).innerText = `${primoSetIn} - ${primoSetOut}`; // Primo Set
