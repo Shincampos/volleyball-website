@@ -35,12 +35,13 @@ function populateClassifica(records) {
         return posizione >= 1 && posizione <= 8;
     });
 
-    // Ordina i record in base alla colonna 'POSIZIONE'
-    filteredRecords.sort((a, b) => (a.fields['POSIZIONE'] || 0) - (b.fields['POSIZIONE'] || 0));
+    // Ordina i record in base alla colonna 'PUNTI' in modo decrescente
+    filteredRecords.sort((a, b) => (b.fields['PUNTI'] || 0) - (a.fields['PUNTI'] || 0));
 
     // Limita a 8 righe (se ci sono più di 8 record)
     const limitedRecords = filteredRecords.slice(0, 8);
 
+    // Popola la tabella mantenendo l'ordine di POSIZIONE
     limitedRecords.forEach(record => {
         const row = tbody.insertRow(); // Crea una nuova riga
 
