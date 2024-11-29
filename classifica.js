@@ -16,49 +16,62 @@ function fetchClassificaData() {
         return response.json();
     })
     .then(data => {
-        console.log(data); // Log della risposta dell'API
-        populateClassifica(data.records);
+        console.log("Dati ricevuti da Airtable:", data); // Log dettagliato
+        populateClassificaTable(data.records);
     })
     .catch(error => console.error('Error fetching data:', error));
 }
 
-// Funzione per popolare la tabella con i dati della classifica
-function populateClassifica(records) {
-    const tbody = document.querySelector('tbody'); // Seleziona il corpo della tabella
+// Funzione per popolare la tabella con i dati delle squadre
+function populateClassificaTable(records) {
+    const tbody = document.querySelector('#classifica tbody'); // Seleziona il corpo della tabella
 
     // Pulisci il contenuto precedente della tabella
     tbody.innerHTML = '';
 
-    // Filtra i record per includere solo quelli con POSIZIONE da 1 a 8
-    const filteredRecords = records.filter(record => {
-        const posizione = record.fields['POSIZIONE'];
-        return posizione >= 1 && posizione <= 8;
+    // Oggetto per tenere traccia dei punti delle squadre
+    const teamPointsMap = {};
+
+    records.forEach(record => {
+        const homeTeam = record.fields['IN CASA'];
+        const awayTeam = record.fields['FUORI CASA'];
+
+        // Set vinti
+        const homeSetsWon = record.fields['CASA'] || 0;
+        const awaySetsWon = record.fields['FUORI'] || 0;
+
+        // Aggiorna le statistiche delle squadre
+        if (homeTeam) {
+            if (!teamPointsMap[homeTeam]) {
+                teamPointsMap[homeTeam] = { name: homeTeam, points: 0 };
+            }
+            teamPointsMap[homeTeam].points += homeSetsWon; // Calcola punti in base ai set vinti
+        }
+
+        if (awayTeam) {
+            if (!teamPointsMap[awayTeam]) {
+                teamPointsMap[awayTeam] = { name: awayTeam, points: 0 };
+            }
+            teamPointsMap[awayTeam].points += awaySetsWon; // Calcola punti in base ai set vinti
+        }
     });
 
-    // Ordina i record in base alla colonna 'PUNTI A' in modo decrescente
-    filteredRecords.sort((a, b) => (b.fields['PUNTI A'] || 0) - (a.fields['PUNTI A'] || 0));
+    console.log("Punti delle squadre:", teamPointsMap); 
 
-    // Limita a 8 righe (se ci sono più di 8 record)
-    const limitedRecords = filteredRecords.slice(0, 8);
+    // Ordinamento basato sui punti (dal più grande al più piccolo)
+    const sortedTeams = Object.values(teamPointsMap).sort((a, b) => b.points - a.points);
 
-    // Popola la tabella mantenendo l'ordine di POSIZIONE
-    limitedRecords.forEach(record => {
-        const row = tbody.insertRow(); // Crea una nuova riga
+   console.log("Squadre ordinate:", sortedTeams); 
 
-        // Aggiungi celle alla riga
-        const positionCell = row.insertCell(0);
-        const teamCell = row.insertCell(1);
-        const pointsCell = row.insertCell(2);
+   // Popola la tabella con i dati aggregati delle squadre
+   sortedTeams.forEach((team, index) => {
+       const row = tbody.insertRow(); 
 
-        // Popola le celle con i dati dal record
-        positionCell.innerText = record.fields['POSIZIONE'] || 'N/A'; 
-        teamCell.innerText = record.fields['SQUADRA'] || 'N/A'; 
-        
-        // Gestisci i valori di PUNTI, mostrando '0' se è presente
-        const puntiValue = record.fields['PUNTI'];
-        pointsCell.innerText = (puntiValue !== undefined && puntiValue !== null) ? puntiValue : 'N/A'; 
-    });
+       row.insertCell(0).innerText = index + 1; // Posizione (fissa)
+       row.insertCell(1).innerText = team.name; 
+       row.insertCell(2).innerText = team.points; 
+   });
 }
 
-// Chiamata alla funzione per recuperare i dati all'avvio della pagina
+// Chiamata alla funzione per recuperare i dati all'avvio della pagina.
 fetchClassificaData();

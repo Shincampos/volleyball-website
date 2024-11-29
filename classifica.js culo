@@ -1,0 +1,129 @@
+const apiKey = 'YOUR_API_KEY'; // Sostituisci con il tuo token
+const baseId = 'YOUR_BASE_ID'; // Sostituisci con l'ID della tua base
+const tableName = 'RisultatiPartite'; // Sostituisci con il nome della tua tabella
+
+// Funzione per recuperare i dati da Airtable
+function fetchPartiteData() {
+    fetch(`https://api.airtable.com/v0/${baseId}/${tableName}`, {
+        headers: {
+            Authorization: `Bearer ${apiKey}`
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data); // Log della risposta dell'API
+        populateStatisticsTable(data.records);
+    })
+    .catch(error => console.error('Error fetching data:', error));
+}
+
+// Funzione per popolare la tabella con i dati delle partite
+function populateStatisticsTable(records) {
+    const tbody = document.querySelector('#statistiche tbody'); // Seleziona il corpo della tabella
+
+    // Pulisci il contenuto precedente della tabella
+    tbody.innerHTML = '';
+
+    // Oggetto per tenere traccia dei dati delle squadre
+    const teamStats = {};
+
+    records.forEach(record => {
+        const homeTeam = record.fields['IN CASA'];
+        const awayTeam = record.fields['FUORI CASA'];
+        
+        // Punti fatti e subiti per la squadra in casa
+        const homePointsScored = (record.fields['1 SET IN'] || 0) + (record.fields['2 SET IN'] || 0) + (record.fields['3 SET IN'] || 0);
+        const awayPointsScored = (record.fields['1 SET OUT'] || 0) + (record.fields['2 SET OUT'] || 0) + (record.fields['3 SET OUT'] || 0);
+
+        // Set vinti e persi
+        const homeSetsWon = record.fields['CASA'] || 0;
+        const homeSetsLost = record.fields['FUORI'] || 0;
+        const awaySetsWon = record.fields['FUORI'] || 0;
+        const awaySetsLost = record.fields['CASA'] || 0;
+
+        // Controlla se i nomi delle squadre sono definiti
+        if (homeTeam && awayTeam) {
+            // Inizializza le statistiche delle squadre se non esistono
+            if (!teamStats[homeTeam]) {
+                teamStats[homeTeam] = {
+                    name: homeTeam,
+                    matchesPlayed: 0,
+                    matchesWon: 0,
+                    matchesLost: 0,
+                    setsWon: 0,
+                    setsLost: 0,
+                    pointsScored: 0,
+                    pointsConceded: 0
+                };
+            }
+            
+            if (!teamStats[awayTeam]) {
+                teamStats[awayTeam] = {
+                    name: awayTeam,
+                    matchesPlayed: 0,
+                    matchesWon: 0,
+                    matchesLost: 0,
+                    setsWon: 0,
+                    setsLost: 0,
+                    pointsScored: 0,
+                    pointsConceded: 0
+                };
+            }
+
+            // Aggiorna le statistiche delle squadre in base ai risultati della partita
+            teamStats[homeTeam].matchesPlayed += 1;
+            teamStats[homeTeam].setsWon += homeSetsWon;
+            teamStats[homeTeam].setsLost += homeSetsLost;
+            teamStats[homeTeam].pointsScored += homePointsScored; // Punti fatti dalla squadra in casa
+            teamStats[homeTeam].pointsConceded += awayPointsScored; // Punti subiti dalla squadra in casa
+            
+            teamStats[awayTeam].matchesPlayed += 1;
+            teamStats[awayTeam].setsWon += awaySetsWon;
+            teamStats[awayTeam].setsLost += awaySetsLost;
+            teamStats[awayTeam].pointsScored += awayPointsScored; // Punti fatti dalla squadra fuori casa
+            teamStats[awayTeam].pointsConceded += homePointsScored; // Punti subiti dalla squadra fuori casa
+
+            // Aggiorna vittorie e sconfitte
+            if (homeSetsWon > awaySetsWon) {
+                teamStats[homeTeam].matchesWon += 1;
+                teamStats[awayTeam].matchesLost += 1;
+            } else {
+                teamStats[awayTeam].matchesWon += 1;
+                teamStats[homeTeam].matchesLost += 1;
+            }
+        }
+    });
+
+    // Converti l'oggetto in un array e ordina per punti in modo decrescente
+    const sortedTeams = Object.values(teamStats).sort((a, b) => b.pointsScored - a.pointsScored);
+
+    // Popola la tabella con i dati aggregati delle squadre
+    sortedTeams.forEach((team, index) => {
+        if (index < 8) { // Assicurati di avere solo le prime 8 squadre
+            const row = tbody.insertRow(); // Crea una nuova riga
+
+            row.insertCell(0).innerText = index + 1; // Posizione (fissa)
+            row.insertCell(1).innerText = team.name; 
+            row.insertCell(2).innerText = team.setsWon; 
+            row.insertCell(3).innerText = team.matchesPlayed; 
+            row.insertCell(4).innerText = team.matchesWon; 
+            row.insertCell(5).innerText = team.matchesLost; 
+            row.insertCell(6).innerText = team.setsWon; 
+            row.insertCell(7).innerText = team.setsLost; 
+            row.insertCell(8).innerText = team.pointsScored; 
+            row.insertCell(9).innerText = team.pointsConceded; 
+            
+            // Calcola quozienti set e punti (se necessario)
+            row.insertCell(10).innerText = (team.setsLost !== 0) ? (team.setsWon / team.setsLost).toFixed(2) : 'N/A';
+            row.insertCell(11).innerText = (team.pointsConceded !== 0) ? (team.pointsScored / team.pointsConceded).toFixed(2) : 'N/A';
+        }
+    });
+}
+
+// Chiamata alla funzione per recuperare i dati all'avvio della pagina
+fetchPartiteData();
