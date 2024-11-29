@@ -35,46 +35,105 @@
         th {
             background-color: #f2f2f2; /* Sfondo grigio chiaro per l'intestazione della tabella */
         }
+
+        /* Stile per la neve */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permette di cliccare sugli altri elementi */
+            z-index: 9999; /* Assicura che sia sopra gli altri contenuti */
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%; /* Inizia sopra la finestra */
+            color: white; /* Colore dei fiocchi di neve */
+            font-size: 30px; /* Dimensione dei fiocchi di neve */
+            animation: fall linear infinite; /* Animazione continua */
+        }
+
+        /* Animazione di caduta con durata aumentata per rallentare la discesa */
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh); /* Scende fino al fondo della finestra */
+                opacity: 0; /* Scompare mentre scende */
+            }
+        }
+
+        /* Genera fiocchi di neve con diverse posizioni e durate */
+        .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; }
+        .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; }
+        .snowflake:nth-child(3) { left: 30%; animation-duration: 14s; }
+        .snowflake:nth-child(4) { left: 40%; animation-duration: 11s; }
+        .snowflake:nth-child(5) { left: 50%; animation-duration: 13s; }
+        .snowflake:nth-child(6) { left: 60%; animation-duration: 15s; }
+        .snowflake:nth-child(7) { left: 70%; animation-duration: 9s; }
+        .snowflake:nth-child(8) { left: 80%; animation-duration: 12s; }
+        .snowflake:nth-child(9) { left: 90%; animation-duration: 11s; }
+        .snowflake:nth-child(10) { left: 50%; animation-duration: 10s; }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Calendario Partite</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="results.html">Risultati</a></li>
-                <li><a href="classifica.html">Classifica</a></li>
-                <li><a href="gallery.html">Galleria Fotografica</a></li>
-                <li><a href="statistiche.html">Statistiche</a></li>
-            </ul>
-        </nav>
-    </header>
+<!-- Elemento neve -->
+<div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+</div>
 
-    <section>
-        <!-- Scritta GIRONE ANDATA sopra la tabella -->
-        <div class="girone-label">GIRONE ANDATA</div>
-        <div style="max-width: 800px; margin: 0 auto;"> <!-- Contenitore per centrare la tabella -->
+<header>
+    <h1>Calendario Partite</h1>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="results.html">Risultati</a></li>
+            <li><a href="classifica.html">Classifica</a></li>
+            <li><a href="gallery.html">Galleria Fotografica</a></li>
+            <li><a href="statistiche.html">Statistiche</a></li>
+        </ul>
+    </nav>
+</header>
 
-        <table id="calendar-table">
-            <thead>
-                <tr>
-                    <th>IN CASA</th>
-                    <th>FUORI CASA</th>
-                    <th>Data</th>
-                    <th>Giorno</th>
-                    <th>Ora</th>
-                </tr>
-            </thead>
-            <tbody id="calendar-body">
-                <!-- Le righe delle partite verranno inserite qui -->
-            </tbody>
-        </table>
-    </section>
+<section>
+    <!-- Scritta GIRONE ANDATA sopra la tabella -->
+    <div class="girone-label">GIRONE ANDATA</div>
+    <div style="max-width: 800px; margin: 0 auto;"> <!-- Contenitore per centrare la tabella -->
+    
+    <table id="calendar-table">
+        <thead>
+            <tr>
+                <th>IN CASA</th>
+                <th>FUORI CASA</th>
+                <th>Data</th>
+                <th>Giorno</th>
+                <th>Ora</th>
+            </tr>
+        </thead>
+        <tbody id="calendar-body">
+            <!-- Le righe delle partite verranno inserite qui -->
+        </tbody>
+    </table>
 
-    <!-- Includi il file JavaScript -->
-    <script src="calendar.js"></script>
+    </div> <!-- Fine del contenitore per centrare la tabella -->
+</section>
+
+<!-- Includi il file JavaScript -->
+<script src="calendar.js"></script>
 
 </body>
 </html>

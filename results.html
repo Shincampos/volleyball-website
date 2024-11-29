@@ -44,47 +44,103 @@
         tr:nth-child(even) {
             background-color: #f9f9f9; /* Colore di sfondo per righe pari (grigio molto chiaro) */
         }
+
+        /* Stile per la neve */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permette di cliccare sugli altri elementi */
+            z-index: 9999; /* Assicura che sia sopra gli altri contenuti */
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%; /* Inizia sopra la finestra */
+            color: white; /* Colore dei fiocchi di neve */
+            font-size: 30px; /* Dimensione dei fiocchi di neve */
+            animation: fall linear infinite; /* Animazione continua */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh); /* Scende fino al fondo della finestra */
+                opacity: 0; /* Scompare mentre scende */
+            }
+        }
+
+        .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; }
+        .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; }
+        .snowflake:nth-child(3) { left: 30%; animation-duration: 14s; }
+        .snowflake:nth-child(4) { left: 40%; animation-duration: 11s; }
+        .snowflake:nth-child(5) { left: 50%; animation-duration: 13s; }
+        .snowflake:nth-child(6) { left: 60%; animation-duration: 15s; }
+        .snowflake:nth-child(7) { left: 70%; animation-duration: 9s; }
+        .snowflake:nth-child(8) { left: 80%; animation-duration: 12s; }
+        .snowflake:nth-child(9) { left: 90%; animation-duration: 11s; }
+        .snowflake:nth-child(10) { left: 50%; animation-duration: 10s; }
     </style>
 </head>
-<body>
-    <header>
-        <h1>Risultati Partite</h1>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="calendar.html">Calendario</a></li>
-                <li><a href="classifica.html">Classifica</a></li>
-                <li><a href="gallery.html">Galleria Fotografica</a></li>
-                <li><a href="statistiche.html">Statistiche</a></li>
-            </ul>
-        </nav>
-    </header>
+<body class="risultati-page"> <!-- Inizio del corpo della pagina con una classe specifica per i risultati -->
 
-    <section>
-        <!-- Scritta GIRONE ANDATA sopra la tabella -->
-        <div class="girone-label">GIRONE ANDATA</div>
+<!-- Elemento neve -->
+<div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+</div>
 
-        <div style="max-width: 800px; margin: 0 auto;">
-            <table id="results-table">
-                <thead>
-                    <tr>
-                        <th>SQUADRA IN CASA</th>
-                        <th>SQUADRA FUORI CASA</th> 
-                        <th>RISULTATO</th> <!-- Intestazione unificata -->
-                        <th>PRIMO SET</th> <!-- Nuova colonna -->
-                        <th>SECONDO SET</th> <!-- Nuova colonna -->
-                        <th>TERZO SET</th> <!-- Nuova colonna -->
-                    </tr>
-                </thead>
-                <tbody id="results-body">
-                    <!-- I risultati verranno inseriti qui tramite JavaScript -->
-                </tbody>
-            </table>
-        </div>
-    </section>
+<header> <!-- Inizio della sezione dell'intestazione -->
+    <h1>Risultati Partite</h1> <!-- Titolo principale della pagina -->
+    <nav> <!-- Inizio della barra di navigazione -->
+        <ul> <!-- Inizio dell'elenco di navigazione -->
+            <li><a href="index.html">Home</a></li> <!-- Link alla home page -->
+            <li><a href="calendar.html">Calendario</a></li> <!-- Link alla pagina del calendario -->
+            <li><a href="classifica.html">Classifica</a></li> <!-- Link alla pagina della classifica -->
+            <li><a href="gallery.html">Galleria Fotografica</a></li> <!-- Link alla galleria fotografica -->
+            <li><a href="statistiche.html">Statistiche</a></li> <!-- Link alla pagina delle statistiche -->
+        </ul> <!-- Fine dell'elenco di navigazione -->
+    </nav> <!-- Fine della barra di navigazione -->
+</header> <!-- Fine dell'intestazione -->
 
-    <!-- Includi il file JavaScript -->
-    <script src="results.js"></script>
+<section>
+    <!-- Scritta GIRONE ANDATA sopra la tabella -->
+    <div class="girone-label">GIRONE ANDATA</div>
+
+    <div style="max-width: 800px; margin: 0 auto;">
+        <table id="results-table">
+            <thead>
+                <tr>
+                    <th>SQUADRA IN CASA</th>
+                    <th>SQUADRA FUORI CASA</th> 
+                    <th>RISULTATO</th> <!-- Intestazione unificata -->
+                    <th>PRIMO SET</th> <!-- Nuova colonna -->
+                    <th>SECONDO SET</th> <!-- Nuova colonna -->
+                    <th>TERZO SET</th> <!-- Nuova colonna -->
+                </tr>
+            </thead>
+            <tbody id="results-body">
+                <!-- I risultati verranno inseriti qui tramite JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- Includi il file JavaScript -->
+<script src="results.js"></script>
 
 </body>
 </html>

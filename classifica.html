@@ -5,40 +5,98 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Rende la pagina responsive su dispositivi mobili -->
     <title>Classifica - Squadra di Pallavolo</title> <!-- Titolo della pagina -->
     <link rel="stylesheet" href="style.css"> <!-- Collega il file CSS esterno per lo stile della pagina -->
+    <style>
+        /* Stile per la neve */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permette di cliccare sugli altri elementi */
+            z-index: 9999; /* Assicura che sia sopra gli altri contenuti */
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%; /* Inizia sopra la finestra */
+            color: white; /* Colore dei fiocchi di neve */
+            font-size: 30px; /* Dimensione dei fiocchi di neve */
+            animation: fall linear infinite; /* Animazione continua */
+        }
+
+        /* Animazione di caduta con durata aumentata per rallentare la discesa */
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh); /* Scende fino al fondo della finestra */
+                opacity: 0; /* Scompare mentre scende */
+            }
+        }
+
+        /* Genera fiocchi di neve con diverse posizioni e durate */
+        .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; }
+        .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; }
+        .snowflake:nth-child(3) { left: 30%; animation-duration: 14s; }
+        .snowflake:nth-child(4) { left: 40%; animation-duration: 11s; }
+        .snowflake:nth-child(5) { left: 50%; animation-duration: 13s; }
+        .snowflake:nth-child(6) { left: 60%; animation-duration: 15s; }
+        .snowflake:nth-child(7) { left: 70%; animation-duration: 9s; }
+        .snowflake:nth-child(8) { left: 80%; animation-duration: 12s; }
+        .snowflake:nth-child(9) { left: 90%; animation-duration: 11s; }
+        .snowflake:nth-child(10) { left: 50%; animation-duration: 10s; }
+    </style>
 </head>
 <body class="classifica-page"> <!-- Inizio del corpo della pagina con una classe specifica per la classifica -->
-    <header> <!-- Inizio della sezione dell'intestazione -->
-        <h1>Classifica Squadra di Pallavolo</h1> <!-- Titolo principale della pagina -->
-        <nav> <!-- Inizio della barra di navigazione -->
-            <ul> <!-- Inizio dell'elenco di navigazione -->
-                <li><a href="index.html">Home</a></li> <!-- Link alla home page -->
-                <li><a href="calendar.html">Calendario</a></li> <!-- Link alla pagina del calendario -->
-                <li><a href="results.html">Risultati</a></li> <!-- Link alla pagina dei risultati -->
-                <li><a href="classifica.html">Classifica</a></li> <!-- Link alla pagina della classifica -->
-                <li><a href="gallery.html">Galleria Fotografica</a></li> <!-- Link alla galleria fotografica -->
-                <li><a href="statistiche.html">Statistiche</a></li> <!-- Link alla pagina delle statistiche -->
-            </ul> <!-- Fine dell'elenco di navigazione -->
-        </nav> <!-- Fine della barra di navigazione -->
-    </header> <!-- Fine dell'intestazione -->
 
-    <main>
-        <h2></h2> <!-- Classifica Attuale ERA A SINISTRA DELLA PAGINA -->
-        <table id="classifica"> 
-            <thead>
-                <tr>
-                    <th>Posizione</th>
-                    <th>Squadra</th>
-                    <th>Punti</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- I dati verranno inseriti qui tramite JavaScript -->
-            </tbody>
-        </table>
-    </main>
+<!-- Elemento neve -->
+<div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+</div>
 
-    
+<header> <!-- Inizio della sezione dell'intestazione -->
+    <h1>Classifica Squadra di Pallavolo</h1> <!-- Titolo principale della pagina -->
+    <nav> <!-- Inizio della barra di navigazione -->
+        <ul> <!-- Inizio dell'elenco di navigazione -->
+            <li><a href="index.html">Home</a></li> <!-- Link alla home page -->
+            <li><a href="calendar.html">Calendario</a></li> <!-- Link alla pagina del calendario -->
+            <li><a href="results.html">Risultati</a></li> <!-- Link alla pagina dei risultati -->
+            <li><a href="classifica.html">Classifica</a></li> <!-- Link alla pagina della classifica -->
+            <li><a href="gallery.html">Galleria Fotografica</a></li> <!-- Link alla galleria fotografica -->
+            <li><a href="statistiche.html">Statistiche</a></li> <!-- Link alla pagina delle statistiche -->
+        </ul> <!-- Fine dell'elenco di navigazione -->
+    </nav> <!-- Fine della barra di navigazione -->
+</header> <!-- Fine dell'intestazione -->
 
-    <script src="classifica.js"></script> <!-- Collega il file JavaScript per gestire la classifica -->
+<main>
+    <h2></h2> <!-- Classifica Attuale ERA A SINISTRA DELLA PAGINA -->
+    <table id="classifica"> 
+        <thead>
+            <tr>
+                <th>Posizione</th>
+                <th>Squadra</th>
+                <th>Punti</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- I dati verranno inseriti qui tramite JavaScript -->
+        </tbody>
+    </table>
+</main>
+
+<script src="classifica.js"></script> <!-- Collega il file JavaScript per gestire la classifica -->
+
 </body>
 </html>

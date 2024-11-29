@@ -59,9 +59,64 @@
             font-size: 30px; /* Dimensione del font per la chiusura */
             cursor: pointer; /* Cambia il cursore quando si passa sopra l'icona di chiusura */
         }
+
+        /* Stile per la neve */
+        .snowflakes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Permette di cliccare sugli altri elementi */
+            z-index: 9999; /* Assicura che sia sopra gli altri contenuti */
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10%; /* Inizia sopra la finestra */
+            color: white; /* Colore dei fiocchi di neve */
+            font-size: 30px; /* Dimensione dei fiocchi di neve */
+            animation: fall linear infinite; /* Animazione continua */
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh); /* Scende fino al fondo della finestra */
+                opacity: 0; /* Scompare mentre scende */
+            }
+        }
+
+        .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; }
+        .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; }
+        .snowflake:nth-child(3) { left: 30%; animation-duration: 14s; }
+        .snowflake:nth-child(4) { left: 40%; animation-duration: 11s; }
+        .snowflake:nth-child(5) { left: 50%; animation-duration: 13s; }
+        .snowflake:nth-child(6) { left: 60%; animation-duration: 15s; }
+        .snowflake:nth-child(7) { left: 70%; animation-duration: 9s; }
+        .snowflake:nth-child(8) { left: 80%; animation-duration: 12s; }
+        .snowflake:nth-child(9) { left: 90%; animation-duration: 11s; }
+        .snowflake:nth-child(10) { left: 50%; animation-duration: 10s; }
     </style>
 </head>
 <body>
+
+<!-- Elemento neve -->
+<div class="snowflakes" aria-hidden="true">
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div>
+</div>
 
 <header>
     <h1>Galleria Fotografica</h1> <!-- Titolo principale della pagina -->
@@ -88,11 +143,11 @@
             <div class="caption">Talento Volley Almost - Numero Zero Volley</div>
         </div>
         <div>
-            <img src="Foto 3" alt="Descrizione foto 3" onclick="openModal(this)">
+            <img src="foto3.jpg" alt="Descrizione foto 3" onclick="openModal(this)">
             <div class="caption">Descrizione Foto 3</div>
         </div>
         <div>
-            <img src="Foto 4" alt="Descrizione foto 4" onclick="openModal(this)">
+            <img src="foto4.jpg" alt="Descrizione foto 4" onclick="openModal(this)">
             <div class="caption">Descrizione Foto 4</div>
         </div>
         <!-- Aggiungi altre foto qui, se necessario -->
