@@ -5,30 +5,132 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Ottimizza la visualizzazione sui dispositivi mobili -->
     <title>Galleria Fotografica</title> <!-- Titolo della pagina, visibile nella scheda del browser -->
     <link rel="stylesheet" href="style.css"> <!-- Collega il file CSS per lo stile della pagina -->
+    <style>
+        /* Stile per la galleria */
+        .gallery {
+            display: grid; /* Utilizza il layout a griglia */
+            grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
+            gap: 50px; /* Spazio tra le immagini */
+            max-width: 800px; /* Larghezza massima della galleria */
+            margin: 20px auto; /* Centra la galleria orizzontalmente */
+        }
+
+        .gallery img {
+            width: 100%; /* Le immagini occupano tutta la larghezza della cella */
+            border-radius: 5px; /* Angoli arrotondati per le immagini */
+            cursor: pointer; /* Cambia il cursore quando si passa sopra l'immagine */
+        }
+
+        .caption {
+            text-align: center; /* Allinea il testo al centro */
+            margin-top: 5px; /* Spazio sopra la didascalia */
+        }
+
+        .modal {
+            display: none; /* Nasconde il modal di default */
+            position: fixed; /* Posizione fissa rispetto alla finestra del browser */
+            z-index: 1000; /* Porta il modal in primo piano */
+            left: 0;
+            top: 0;
+            width: 100%; /* Occupa tutta la larghezza della finestra del browser */
+            height: 100%; /* Occupa tutta l'altezza della finestra del browser */
+            background-color: rgba(0, 0, 0, 0.8); /* Sfondo semi-trasparente */
+            justify-content: center; /* Centra orizzontalmente */
+            align-items: center; /* Centra verticalmente */
+        }
+
+        .modal img {
+            max-width: 90%; /* Limita la larghezza massima dell'immagine nel modal mantenendo le proporzioni */
+            max-height: 90%; /* Limita l'altezza massima dell'immagine nel modal mantenendo le proporzioni */
+            object-fit: contain; /* Mantiene le proporzioni originali dell'immagine */
+        }
+
+        .close {
+            position: absolute; /* Posizione assoluta rispetto al modal */
+            top: 20px;
+            right: 30px;
+            color: white; /* Colore del testo della chiusura */
+            font-size: 30px; /* Dimensione del font per la chiusura */
+            cursor: pointer; /* Cambia il cursore quando si passa sopra l'icona di chiusura */
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Galleria Fotografica</h1> <!-- Titolo principale della pagina -->
-        <nav> <!-- Inizia la barra di navigazione -->
-            <ul> <!-- Crea una lista non ordinata per i link di navigazione -->
-                <li><a href="index.html">Home</a></li> <!-- Link alla home page -->
-                <li><a href="calendar.html">Calendario</a></li> <!-- Link alla pagina del calendario -->
-                <li><a href="results.html">Risultati</a></li> <!-- Link alla pagina dei risultati -->
-                <li><a href="classifica.html">Classifica</a></li> <!-- Link alla pagina della classifica -->
-                <li><a href="statistiche.html">Statistiche</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <section>
-        <h2>Foto della Squadra</h2> <!-- Sotto-titolo della sezione della galleria -->
-        <div class="gallery"> <!-- Contenitore per le immagini della galleria -->
-            <img src="foto1.jpg" alt="Descrizione foto 1"> <!-- Immagine con testo alternativo per accessibilità -->
-            <img src="foto2.jpg" alt="Descrizione foto 2"> <!-- Immagine con testo alternativo per accessibilità -->
-            <img src="foto3.jpg" alt="Descrizione foto 3"> <!-- Immagine con testo alternativo per accessibilità -->
-            <img src="foto4.jpg" alt="Descrizione foto 4"> <!-- Immagine con testo alternativo per accessibilità -->
-            <!-- Aggiungi altre foto qui, se necessario -->
+<header>
+    <h1>Galleria Fotografica</h1> <!-- Titolo principale della pagina -->
+    <nav> <!-- Inizia la barra di navigazione -->
+        <ul> <!-- Crea una lista non ordinata per i link di navigazione -->
+            <li><a href="index.html">Home</a></li> <!-- Link alla home page -->
+            <li><a href="calendar.html">Calendario</a></li> <!-- Link alla pagina del calendario -->
+            <li><a href="results.html">Risultati</a></li> <!-- Link alla pagina dei risultati -->
+            <li><a href="classifica.html">Classifica</a></li> <!-- Link alla pagina della classifica -->
+            <li><a href="statistiche.html">Statistiche</a></li> <!-- Link alla pagina delle statistiche -->
+        </ul>
+    </nav>
+</header>
+
+<section>
+    <h2></h2> <!-- Sotto-titolo della sezione della galleria -->
+    <div class="gallery"> <!-- Contenitore per le immagini della galleria -->
+        <div>
+            <img src="paglieta-tso.jpeg" alt="Descrizione foto 1" onclick="openModal(this)">
+            <div class="caption">Virtus Volley Paglieta - Talento Volley TSO</div>
         </div>
-    </section>
+        <div>
+            <img src="almost-numero.jpeg" alt="Descrizione foto 2" onclick="openModal(this)">
+            <div class="caption">Talento Volley Almost - Numero Zero Volley</div>
+        </div>
+        <div>
+            <img src="almost-numero.jpeg" alt="Descrizione foto 3" onclick="openModal(this)">
+            <div class="caption">Descrizione Foto 3</div>
+        </div>
+        <div>
+            <img src="paglieta-tso.jpeg" alt="Descrizione foto 4" onclick="openModal(this)">
+            <div class="caption">Descrizione Foto 4</div>
+        </div>
+        <div>
+            <img src="paglieta-tso.jpeg" alt="Descrizione foto 1" onclick="openModal(this)">
+            <div class="caption">Virtus Volley Paglieta - Talento Volley TSO</div>
+        </div>
+        <div>
+            <img src="almost-numero.jpeg" alt="Descrizione foto 2" onclick="openModal(this)">
+            <div class="caption">Talento Volley Almost - Numero Zero Volley</div>
+        </div>
+        <div>
+            <img src="almost-numero.jpeg" alt="Descrizione foto 3" onclick="openModal(this)">
+            <div class="caption">Descrizione Foto 3</div>
+        </div>
+        <div>
+            <img src="paglieta-tso.jpeg" alt="Descrizione foto 4" onclick="openModal(this)">
+            <div class="caption">Descrizione Foto 4</div>
+        </div>
+        <!-- Aggiungi altre foto qui, se necessario -->
+    </div>
+
+    <!-- Modal per visualizzare l'immagine ingrandita -->
+    <div class="modal" id="myModal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+</section>
+
+<!-- Includi il file JavaScript -->
+<script>
+function openModal(img) {
+    const modal = document.getElementById("myModal");
+    const modalImg = document.getElementById("modalImage");
+    
+    modal.style.display = "flex"; // Mostra il modal
+    modalImg.src = img.src; // Imposta l'immagine nel modal
+}
+
+function closeModal() {
+    const modal = document.getElementById("myModal");
+    modal.style.display = "none"; // Nasconde il modal
+}
+</script>
+
 </body>
 </html>
