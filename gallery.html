@@ -9,7 +9,7 @@
         /* Stile per la galleria */
         .gallery {
             display: grid; /* Utilizza il layout a griglia */
-            grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Colonne flessibili */
             gap: 20px; /* Spazio tra le immagini */
             max-width: 800px; /* Larghezza massima della galleria */
             margin: 20px auto; /* Centra la galleria orizzontalmente */
@@ -21,7 +21,8 @@
 
         .gallery img {
             width: 100%; /* Le immagini occupano tutta la larghezza della cella */
-            height: 150px; /* Imposta un'altezza fissa per uniformità */
+            height: auto; /* Mantiene le proporzioni originali dell'immagine */
+            max-height: 150px; /* Limita l'altezza massima delle immagini per uniformità */
             object-fit: cover; /* Mantiene le proporzioni originali dell'immagine senza deformarla */
             border-radius: 5px; /* Angoli arrotondati per le immagini */
             cursor: pointer; /* Cambia il cursore quando si passa sopra l'immagine */
@@ -87,27 +88,11 @@
             <div class="caption">Talento Volley Almost - Numero Zero Volley</div>
         </div>
         <div>
-            <img src="almost-numero.jpeg" alt="Descrizione foto 3" onclick="openModal(this)">
+            <img src="Foto 3" alt="Descrizione foto 3" onclick="openModal(this)">
             <div class="caption">Descrizione Foto 3</div>
         </div>
         <div>
-            <img src="paglieta-tso.jpeg" alt="Descrizione foto 4" onclick="openModal(this)">
-            <div class="caption">Descrizione Foto 4</div>
-        </div>
-        <div>
-            <img src="paglieta-tso.jpeg" alt="Descrizione foto 1" onclick="openModal(this)">
-            <div class="caption">Virtus Volley Paglieta - Talento Volley TSO</div>
-        </div>
-        <div>
-            <img src="almost-numero.jpeg" alt="Descrizione foto 2" onclick="openModal(this)">
-            <div class="caption">Talento Volley Almost - Numero Zero Volley</div>
-        </div>
-        <div>
-            <img src="almost-numero.jpeg" alt="Descrizione foto 3" onclick="openModal(this)">
-            <div class="caption">Descrizione Foto 3</div>
-        </div>
-        <div>
-            <img src="paglieta-tso.jpeg" alt="Descrizione foto 4" onclick="openModal(this)">
+            <img src="Foto 4" alt="Descrizione foto 4" onclick="openModal(this)">
             <div class="caption">Descrizione Foto 4</div>
         </div>
         <!-- Aggiungi altre foto qui, se necessario -->
