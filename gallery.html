@@ -10,19 +10,24 @@
         .gallery {
             display: grid; /* Utilizza il layout a griglia */
             grid-template-columns: repeat(4, 1fr); /* 4 colonne di larghezza uguale */
-            gap: 50px; /* Spazio tra le immagini */
+            gap: 20px; /* Spazio tra le immagini */
             max-width: 800px; /* Larghezza massima della galleria */
             margin: 20px auto; /* Centra la galleria orizzontalmente */
         }
 
+        .gallery div {
+            text-align: center; /* Allinea il contenuto al centro (immagine e didascalia) */
+        }
+
         .gallery img {
             width: 100%; /* Le immagini occupano tutta la larghezza della cella */
+            height: 200px; /* Imposta un'altezza fissa per uniformità */
+            object-fit: cover; /* Mantiene le proporzioni originali dell'immagine senza deformarla */
             border-radius: 5px; /* Angoli arrotondati per le immagini */
             cursor: pointer; /* Cambia il cursore quando si passa sopra l'immagine */
         }
 
         .caption {
-            text-align: center; /* Allinea il testo al centro */
             margin-top: 5px; /* Spazio sopra la didascalia */
         }
 
@@ -42,7 +47,7 @@
         .modal img {
             max-width: 90%; /* Limita la larghezza massima dell'immagine nel modal mantenendo le proporzioni */
             max-height: 90%; /* Limita l'altezza massima dell'immagine nel modal mantenendo le proporzioni */
-            object-fit: contain; /* Mantiene le proporzioni originali dell'immagine */
+            object-fit: contain; /* Mantiene le proporzioni originali dell'immagine nel modal */
         }
 
         .close {
