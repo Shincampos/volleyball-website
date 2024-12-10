@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Statistiche - Squadra di Pallavolo</title>
-    <link rel="stylesheet" href="style.css"> <!-- Assicurati di avere un file CSS per lo stile -->
+    <title>Contatti</title>
+    <link rel="stylesheet" href="style.css"> <!-- Collega il file CSS esistente -->
     <style>
         /* Stile per la neve */
         .snowflakes {
@@ -25,6 +25,7 @@
             animation: fall linear infinite; /* Animazione continua */
         }
 
+        /* Animazione di caduta */
         @keyframes fall {
             0% {
                 transform: translateY(0);
@@ -35,17 +36,6 @@
                 opacity: 0; /* Scompare mentre scende */
             }
         }
-
-        .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; }
-        .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; }
-        .snowflake:nth-child(3) { left: 30%; animation-duration: 14s; }
-        .snowflake:nth-child(4) { left: 40%; animation-duration: 11s; }
-        .snowflake:nth-child(5) { left: 50%; animation-duration: 13s; }
-        .snowflake:nth-child(6) { left: 60%; animation-duration: 15s; }
-        .snowflake:nth-child(7) { left: 70%; animation-duration: 9s; }
-        .snowflake:nth-child(8) { left: 80%; animation-duration: 12s; }
-        .snowflake:nth-child(9) { left: 90%; animation-duration: 11s; }
-        .snowflake:nth-child(10) { left: 50%; animation-duration: 10s; }
     </style>
 </head>
 <body>
@@ -65,42 +55,41 @@
 </div>
 
 <header>
-    <h1>Statistiche della Squadra di Pallavolo</h1>
+    <h1>Contatti delle Squadre</h1>
     <nav>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="calendar.html">Calendario</a></li>
             <li><a href="results.html">Risultati</a></li>
             <li><a href="classifica.html">Classifica</a></li>
-            <li><a href="contatti.html">Galleria Fotografica</a></li> <!-- Link alla pagina dei contatti -->
-            <li><a href="gallery.html">Galleria Fotografica</a></li> <!-- Link alla galleria fotografica -->
+            <li><a href="gallery.html">Galleria Fotografica</a></li>
+            <li><a href="statistiche.html">Statistiche</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
-    <table id="statistiche">
+    <h2></h2>
+
+    <table id="contacts-table">
         <thead>
             <tr>
-                <th>Posizione</th>
-                <th>Squadra</th>
-                <th>Punti</th>
-                <th>Partite Giocate</th>
-                <th>Partite Vinte</th>
-                <th>Partite Perse</th>
-                <th>Set Vinti</th>
-                <th>Set Persi</th>
-                <th>Punti Fatti</th>
-                <th>Punti Subiti</th>
-                <th>Quoziente Set</th>
-                <th>Quoziente Punti</th>
+                <th>SOCIETA'</th>
+                <th>REFERENTE</th>
+                <th>TELEFONO REFERENTE</th>
+                <th>ALLENATORE</th>
+                <th>TELEFONO ALLENATORE</th>
             </tr>
         </thead>
-        <tbody></tbody> <!-- Corpo della tabella popolato dinamicamente -->
+        <tbody id="contacts-body">
+            <!-- Le righe dei contatti verranno inserite qui -->
+        </tbody>
     </table>
+
 </main>
 
-<script src="statistiche.js"></script> <!-- Collega il file JavaScript -->
+<script src="contatti.js"></script> <!-- Collega il file JavaScript per i contatti -->
+<footer></footer>
 
 </body>
 </html>
