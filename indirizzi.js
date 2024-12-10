@@ -35,6 +35,19 @@ function populateAddresses(records) {
         
         row.insertCell(0).innerText = record.fields['SOCIETA'] || 'N/A'; // Società
         row.insertCell(1).innerText = record.fields['INDIRIZZO PALESTRA'] || 'N/A'; // Indirizzo Palestra
+
+        // Crea un pulsante per aprire Google Maps
+        const addressButton = document.createElement('button');
+        addressButton.innerText = 'Naviga';
+        
+        // Aggiungi un evento click al pulsante
+        addressButton.onclick = function() {
+            const address = encodeURIComponent(record.fields['INDIRIZZO PALESTRA'] || ''); // Ottieni l'indirizzo
+            const url = `https://www.google.com/maps/search/?api=1&query=${address}`; // URL di Google Maps
+            window.open(url, '_blank'); // Apri in una nuova scheda
+        };
+
+        row.insertCell(2).appendChild(addressButton); // Aggiungi il pulsante alla cella
     });
 }
 
