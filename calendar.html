@@ -6,10 +6,10 @@
     <title>Calendario</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Stile per la scritta GIRONE ANDATA */
+        /* Stile per la scritta GIRONE ANDATA e GIRONE RITORNO */
         .girone-label {
             text-align: center; /* Allinea il testo al centro */
-            font-weight: bold; /* Grassetto per la scritta GIRONE ANDATA */
+            font-weight: bold; /* Grassetto per la scritta */
             font-size: 1.5em; /* Dimensione del font */
             margin-bottom: 10px; /* Spazio sotto la scritta */
             background-color: white; /* Sfondo bianco */
@@ -67,7 +67,7 @@
             }
         }
 
-        /* Genera fiocchi di neve con diverse posizioni e durate */
+        /* Genera fiocchi di neve con diverse posizioni e durate * tolgo il simbolo / 
         .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; }
         .snowflake:nth-child(2) { left: 20%; animation-duration: 12s; }
         .snowflake:nth-child(3) { left: 30%; animation-duration: 14s; }
@@ -82,7 +82,7 @@
 </head>
 <body>
 
-<!-- Elemento neve -->
+<!-- Elemento neve -- tolgo il maggiore dalla freccia precedente >
 <div class="snowflakes" aria-hidden="true">
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
@@ -93,7 +93,7 @@
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
     <div class="snowflake">❄</div>
-    <div class="snowflake">❄</div>
+    <div class="snowflake">❄</div> aggiungo freccia per togliere neve -->
 </div>
 
 <header>
@@ -127,6 +127,27 @@
             </tr>
         </thead>
         <tbody id="calendar-body">
+            <!-- Le righe delle partite verranno inserite qui -->
+        </tbody>
+    </table>
+
+    </div> <!-- Fine del contenitore per centrare la tabella -->
+
+    <!-- Scritta GIRONE RITORNO sopra la seconda tabella -->
+    <div class="girone-label" style="margin-top: 20px;">GIRONE RITORNO</div>
+    <div style="max-width: 800px; margin: 0 auto;"> <!-- Contenitore per centrare la tabella -->
+
+    <table id="return-calendar-table">
+        <thead>
+            <tr>
+                <th>IN CASA</th>
+                <th>FUORI CASA</th>
+                <th>Data</th>
+                <th>Giorno</th>
+                <th>Ora</th>
+            </tr>
+        </thead>
+        <tbody id="return-calendar-body">
             <!-- Le righe delle partite verranno inserite qui -->
         </tbody>
     </table>

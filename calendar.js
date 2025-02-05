@@ -22,25 +22,17 @@ function fetchCalendarData() {
     .catch(error => console.error('Error fetching data:', error));
 }
 
-// Funzione per popolare la tabella con i dati e le giornate
+// Funzione per popolare le tabelle con i dati e le giornate
 function populateCalendar(records) {
-    const calendarBody = document.getElementById('calendar-body');
+    const calendarBody = document.getElementById('calendar-body'); // Tabella GIRONE ANDATA
+    const returnCalendarBody = document.getElementById('return-calendar-body'); // Tabella GIRONE RITORNO
 
     let currentDay = 1; // Iniziamo dalla GIORNATA 1
     let matchCount = 0; // Variabile per tenere traccia delle partite
 
-    // Aggiungi la riga per GIORNATA 1 subito dopo l'intestazione
-    const dayRow = calendarBody.insertRow();
-    const cell = dayRow.insertCell(0);
-    cell.colSpan = 5; // Colspan per far sì che la scritta occupi tutta la riga
-    cell.innerText = `GIORNATA ${currentDay}`; // Scritta GIORNATA 1
-    cell.style.fontWeight = 'bold'; // Grassetto per la scritta GIORNATA
-    cell.style.textAlign = 'center'; // Centra il testo
-    cell.style.backgroundColor = '#f0f8ff'; // Colore di sfondo (puoi cambiarlo)
-    cell.style.color = '#000080'; // Colore del testo (puoi cambiarlo)
-
     records.forEach(record => {
-        const row = calendarBody.insertRow();
+        const row = document.createElement('tr');
+        
         row.insertCell(0).innerText = record.fields['IN CASA'] || 'N/A'; // Squadra in casa
         row.insertCell(1).innerText = record.fields['FUORI CASA'] || 'N/A'; // Squadra in trasferta
         row.insertCell(2).innerText = record.fields['Data'] || 'N/A'; // Data della partita
@@ -49,17 +41,33 @@ function populateCalendar(records) {
         
         matchCount++; // Incrementa il conteggio delle partite
 
+        // Aggiungi la riga alla giusta tabella
+        if (currentDay <= 7) {
+            calendarBody.appendChild(row); // Aggiungi alla tabella del girone andata
+        } else {
+            returnCalendarBody.appendChild(row); // Aggiungi alla tabella del girone ritorno
+        }
+
         // Aggiungi una riga per la GIORNATA ogni 4 partite
-        if (matchCount % 4 === 0 && matchCount < records.length) {
+        if (matchCount % 4 === 0) {
             currentDay++;
-            const dayRow = calendarBody.insertRow();
+            
+            const dayRow = document.createElement('tr');
             const cell = dayRow.insertCell(0);
-            cell.colSpan = 5; 
-            cell.innerText = `GIORNATA ${currentDay}`; 
-            cell.style.fontWeight = 'bold';
-            cell.style.textAlign = 'center';
-            cell.style.backgroundColor = '#f0f8ff'; // Colore di sfondo (puoi cambiarlo)
-            cell.style.color = '#000080'; // Colore del testo (puoi cambiarlo)
+            cell.colSpan = 5;
+            
+            cell.innerText = `GIORNATA ${currentDay - (currentDay > 7 ? 7 : 0)}`; 
+            
+            dayRow.style.fontWeight = 'bold';
+            dayRow.style.textAlign = 'center';
+            dayRow.style.backgroundColor = '#f0f8ff';
+            dayRow.style.color = '#000080';
+
+            if (currentDay <= 7) {
+                calendarBody.appendChild(dayRow); // Aggiungi alla tabella del girone andata
+            } else {
+                returnCalendarBody.appendChild(dayRow); // Aggiungi alla tabella del girone ritorno
+            }
         }
     });
 }
